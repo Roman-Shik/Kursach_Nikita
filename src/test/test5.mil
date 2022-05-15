@@ -1,0 +1,6 @@
+BEGIN
+    i := 10;
+    // nice
+    // work
+    WRITE(i)
+END

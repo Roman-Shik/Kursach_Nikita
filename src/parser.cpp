@@ -113,7 +113,7 @@ void Parser::statement()
 		mustBe(T_RPAREN);
 		codegen_->emit(PRINT);
 	}
-	else {
+	else if(!match(T_SKIP)) {
 		reportError("statement expected.");
 	}
 }

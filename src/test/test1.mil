@@ -1,0 +1,5 @@
+BEGIN
+    i := 10;
+    SKIP;
+    WRITE(i)
+END

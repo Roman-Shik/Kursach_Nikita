@@ -1,0 +1,2 @@
+Line 8: statement expected.
+Line 8: '*' or '/' found while 'END' expected.

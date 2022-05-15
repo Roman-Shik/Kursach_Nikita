@@ -29,7 +29,8 @@ enum Token {
 	T_CMP,	      // Сводная лексема для операторов отношения
 	T_LPAREN,     // Открывающая скобка
 	T_RPAREN,     // Закрывающая скобка
-	T_SEMICOLON   // ";"
+	T_SEMICOLON,  // ";"
+	T_SKIP        // Ключевое слово "skip"
 };
 
 // Функция tokenToString возвращает описание лексемы.
@@ -74,6 +75,7 @@ public:
 		keywords_["od"] = T_OD;
 		keywords_["write"] = T_WRITE;
 		keywords_["read"] = T_READ;
+		keywords_["skip"] = T_SKIP;
 
 		nextChar();
 	}

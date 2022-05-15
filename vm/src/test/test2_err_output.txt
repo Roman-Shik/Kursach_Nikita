@@ -1,0 +1,4 @@
+Line 3: 'SKIP' found while 'THEN' expected.
+Line 5: statement expected.
+Line 5: end of file found while 'FI' expected.
+Line 5: end of file found while 'END' expected.

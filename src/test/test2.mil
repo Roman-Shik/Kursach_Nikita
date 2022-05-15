@@ -1,0 +1,5 @@
+BEGIN
+    i := 10;
+    IF i < 5 SKIP i := 15 FI;
+    WRITE(i)
+END

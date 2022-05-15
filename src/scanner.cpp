@@ -28,6 +28,7 @@ static const char * tokenNames_[] = {
 	"'('",
 	"')'",
 	"';'",
+	"'SKIP'",
 };
 
 void Scanner::nextToken()
@@ -42,11 +43,16 @@ void Scanner::nextToken()
 	// Если "/" не найден - ищем следующую "*".
 	while(ch_ == '/') {
 		nextChar();
+		// Нашли комменарий вида "/* ... */"
 		if(ch_ == '*') {
 			nextChar();
 			bool inside = true;
 			while(inside) {
 				while(ch_ != '*' && !input_.eof()) {
+					// Если комментарий многострочный - считаем строки
+					if (ch_ == '\n') {
+						++lineNumber_;						
+					}
 					nextChar();
 				}
 				if(input_.eof()) {
@@ -58,7 +64,21 @@ void Scanner::nextToken()
 					inside = false;
 					nextChar();
 				}
+				// Не забываем проверить перенос строки
+				else if (ch_ == '\n') {
+					++lineNumber_;						
+				}
 			}
+		}
+		// Нашли комменарий вида "// ..."
+		else if(ch_ == '/') {
+			nextChar();
+			while(ch_ != '\n') {
+				nextChar();
+			}
+			// Все еще считаем переносы строк в комментариях
+			++lineNumber_;
+			nextChar();
 		}
 		else {
 			token_ = T_MULOP;
